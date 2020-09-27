@@ -1,5 +1,7 @@
 package com.example.Bookstore.web;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
+import com.example.Bookstore.domain.CategoryRepository;
 
 @Controller
 
 public class BookstoreController {
 	@Autowired
 	private BookRepository repository; 
+	
+	@Autowired
+	private CategoryRepository crepository;
 	
     @RequestMapping(value= {"/booklist"})
     public String bookList(Model model) {	
@@ -26,6 +32,7 @@ public class BookstoreController {
     @RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
+    	model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }     
     
@@ -40,6 +47,14 @@ public class BookstoreController {
     	repository.deleteById(bookId);
         return "redirect:../booklist";
     }     
+    
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String editBook(@PathVariable("id") Long bookId, Model model) {
+    	Optional<Book> book = repository.findById(bookId);
+    	model.addAttribute("book", book);
+    	model.addAttribute("categories", crepository.findAll());
+        return "editbook";
+    }
 
 	@GetMapping("/index")
 	public String getBookstore(Model model) {
