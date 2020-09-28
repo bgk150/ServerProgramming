@@ -1,6 +1,7 @@
 package com.example.Bookstore.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,8 +20,10 @@ public class Book {
 	private double price;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "categoryid")
 	private Category category;
+	
+	public Book() {}
 
 	public Book(String title, String author, int year, int isbn, double price, Category category) {
 		super();
@@ -40,9 +43,6 @@ public class Book {
 		this.category = category;
 	}
 
-	public Book() {
-		super();
-	}
 
 	public Long getId() {
 		return id;
