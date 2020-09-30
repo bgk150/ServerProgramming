@@ -18,14 +18,14 @@ import com.example.Bookstore.domain.CategoryRepository;
 
 public class BookstoreController {
 	@Autowired
-	private BookRepository brepository; 
+	private BookRepository repository; 
 	
 	@Autowired
 	private CategoryRepository crepository;
 	
     @RequestMapping(value= {"/booklist"})
     public String bookList(Model model) {	
-        model.addAttribute("books", brepository.findAll());
+        model.addAttribute("books", repository.findAll());
         return "booklist";
     }
     
@@ -38,19 +38,19 @@ public class BookstoreController {
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Book book){
-        brepository.save(book);
+        repository.save(book);
         return "redirect:booklist";
     }    
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
-    	brepository.deleteById(bookId);
+    	repository.deleteById(bookId);
         return "redirect:../booklist";
     }     
     
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editBook(@PathVariable("id") Long bookId, Model model) {
-    	Optional<Book> book = brepository.findById(bookId);
+    	Optional<Book> book = repository.findById(bookId);
     	model.addAttribute("book", book);
     	model.addAttribute("categories", crepository.findAll());
         return "editbook";
