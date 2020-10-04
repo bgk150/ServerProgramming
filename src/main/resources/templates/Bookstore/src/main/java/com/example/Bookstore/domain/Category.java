@@ -9,18 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-
 @Entity
 public class Category {
-	@Id
+    @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long categoryid;
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-	@JsonBackReference
 	private List<Book> books;
 	
 	public Category() {}
@@ -54,9 +50,6 @@ public class Category {
 		this.books = books;
 	}
 	
-	@Override
-	public String toString() {
-		return "Category [categoryid=" + categoryid + ", name=" + name + "]";
-	}
-
+	
+	
 }

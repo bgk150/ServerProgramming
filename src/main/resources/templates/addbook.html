@@ -3,6 +3,8 @@
 <head>
 <title>Booklist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
 	<h1>Add Book</h1>
@@ -23,13 +25,13 @@
 
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="categorylist">Category</label> <select id="categorylist"
-				th:field="*{category}" class="form-control">
+				th:field="*{category.categoryid}" class="form-control">
 				<option th:each="category: ${categories}"
-					th:value="${category.id}" th:text="${category.name}"></option>
+					th:value="${category.categoryid}" th:text="${category.name}"></option>
 			</select>
 
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
+			<input class="btn btn-success" type="submit" value="Save"></input>
 		</form>
 	</div>
 </body>
