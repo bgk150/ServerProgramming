@@ -20,7 +20,6 @@ public class Category {
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-	@JsonBackReference
 	private List<Book> books;
 	
 	public Category() {}
