@@ -8,9 +8,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.example.Bookstore.web.CustomerDetailServiceImp;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
-import com.example.Bookstore.web.UserDetailServiceImp;
 
 @Configuration
 @EnableWebSecurity
@@ -19,7 +20,7 @@ import com.example.Bookstore.web.UserDetailServiceImp;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Autowired 
-	private UserDetailServiceImp userDetailsService;
+	private CustomerDetailServiceImp customerDetailsService;
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired 
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new 
+		auth.userDetailsService(customerDetailsService).passwordEncoder(new 
 				BCryptPasswordEncoder());
 		}
 
