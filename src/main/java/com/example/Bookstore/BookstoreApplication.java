@@ -36,7 +36,7 @@ public class BookstoreApplication {
 			brepository.save(new Book("To Kill A Mockingbird", "Harper Lee", 2010, 1001, 150, crepository.findByName("Fiction").get(0)));
 			brepository.save(new Book("Great Expectations", "Charles Dickens", 2000, 1002, 200, crepository.findByName("Classic").get(0)));
 			
-			User user1 = new User("student", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER", "user@booklist.com");
+			User user1 = new User("student", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "CUSTOMER", "user@booklist.com");
 			User user2 = new User("teacher", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN", "admin@booklist.com");
 			urepository.save(user1);
 			urepository.save(user2);

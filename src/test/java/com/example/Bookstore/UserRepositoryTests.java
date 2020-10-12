@@ -29,7 +29,7 @@ public class UserRepositoryTests {
     
     @Test
     public void createUser() {
-    	User user = new User("chandlerbing", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER", "chandler.bing@gmail.com");
+    	User user = new User("chandlerbing", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "CUSTOMER", "chandler.bing@gmail.com");
     	repository.save(user);
     	assertThat(user.getId()).isNotNull();
     }    
