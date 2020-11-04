@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Customer {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +27,10 @@ public class Customer {
     @Column(name = "email", nullable = false)
     private String email;
     
-    public Customer() {
+    public User() {
     }
 
-	public Customer(String username, String passwordHash, String role, String email) {
+	public User(String username, String passwordHash, String role, String email) {
 		super();
 		this.username = username;
 		this.passwordHash = passwordHash;
