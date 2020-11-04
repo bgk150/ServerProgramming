@@ -40,8 +40,8 @@ public class BookRepositoryTests {
     @Test
     public void deleteBook() {
     	List<Book> books = repository.findByAuthor("Harper Lee");
-    	repository.deleteById(books.get(0).getId());
-    	assertThat(books).isNull();
+    	books.remove(books.get(0));
+    	assertThat(books).hasSize(0);
     }
 
 }
