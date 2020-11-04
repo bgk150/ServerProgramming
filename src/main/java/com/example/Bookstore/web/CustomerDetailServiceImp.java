@@ -7,21 +7,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.Bookstore.domain.User;
-import com.example.Bookstore.domain.UserRepository;
+import com.example.Bookstore.domain.Customer;
+import com.example.Bookstore.domain.CustomerRepository;
 
 @Service
-public class UserDetailServiceImp implements UserDetailsService  {
-	private final UserRepository repository;
+public class CustomerDetailServiceImp implements UserDetailsService  {
+	private final CustomerRepository repository;
 	@Autowired
-	public UserDetailServiceImp(UserRepository userRepository) {
-		this.repository = userRepository;
+	public CustomerDetailServiceImp(CustomerRepository customerRepository) {
+		this.repository = customerRepository;
 	}
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {   
-    	User curruser = repository.findByUsername(username);
+    	Customer curruser = repository.findByUsername(username);
         UserDetails user = new org.springframework.security.core.userdetails.User(username, curruser.getPasswordHash(), 
         		AuthorityUtils.createAuthorityList(curruser.getRole()));
         return user;
