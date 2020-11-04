@@ -15,7 +15,7 @@ public class Customer {
     private Long id;
 
     // Username with unique constraint
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name = "password", nullable = false)
