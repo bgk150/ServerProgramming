@@ -25,6 +25,8 @@ public class BookstoreApplication {
 
 	@Bean
 	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository, CustomerRepository urepository) {
+		urepository.deleteAll();
+		
 		return (args) -> {
 			log.info("save a couple of categories");
 			crepository.save(new Category("Classic"));
